@@ -1,15 +1,12 @@
-export interface Sortable{
-  length: number
-  swap(i:number, j: number): void
-  compare(i:number, j:number): boolean
-}
-
-export class SortCollection{
-  sort(sortable: Sortable):void{
-      for(let i=0;i<sortable.length;i++){
-      for(let j=0;j<sortable.length-i-1;j++){
-        if(sortable.compare(j, j+1)){
-          sortable.swap(j, j+1)
+export abstract class SortCollection{
+  abstract length: number;
+  abstract compare(i: number, j: number): boolean;
+  abstract swap(i:number, j:number): void
+  sort():void{
+      for(let i=0;i<this.length;i++){
+      for(let j=0;j<this.length-i-1;j++){
+        if(this.compare(j, j+1)){
+          this.swap(j, j+1)
         }
       }
     }
